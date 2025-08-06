@@ -21,7 +21,6 @@ const events: Event[] = [
 
 export default function CalendarWidget() {
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate()
   const firstDayOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay()
@@ -134,7 +133,7 @@ export default function CalendarWidget() {
                       ? "bg-blue-500 text-white"
                       : "hover:bg-gray-100 dark:hover:bg-[#1F1F23] text-gray-900 dark:text-white"
                   }`}
-                  onClick={() => setSelectedDate(new Date(currentDate.getFullYear(), currentDate.getMonth(), day))}
+                  onClick={() => console.log(`Selected date: ${new Date(currentDate.getFullYear(), currentDate.getMonth(), day).toDateString()}`)}
                 >
                   <span className="text-sm">{day}</span>
                   {dayEvents.length > 0 && (

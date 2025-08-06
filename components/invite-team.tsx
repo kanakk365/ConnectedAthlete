@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { UserPlus, Mail, Stethoscope, BellIcon as Whistle, Users } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 interface TeamMember {
   id: string
@@ -115,7 +116,7 @@ export default function InviteTeam() {
             <div className="space-y-2">
               {teamMembers.map((member) => (
                 <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg bg-gray-50 dark:bg-[#1F1F23]">
-                  <img src={member.avatar || "/placeholder.svg"} alt={member.name} className="w-8 h-8 rounded-full" />
+                  <Image src={member.avatar || "/placeholder.svg"} alt={member.name} width={32} height={32} className="w-8 h-8 rounded-full" />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       {getRoleIcon(member.role)}

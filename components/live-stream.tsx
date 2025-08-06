@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Video, Play, Users, Maximize2, Volume2 } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 interface LiveStream {
   id: string
@@ -52,7 +53,7 @@ export default function LiveStream() {
           {/* Main Stream Player */}
           {selectedStream && (
             <div className="relative rounded-lg overflow-hidden bg-black">
-              <img
+              <Image
                 src={selectedStream.thumbnail || "/placeholder.svg"}
                 alt={selectedStream.title}
                 className="w-full h-48 object-cover"
@@ -116,9 +117,11 @@ export default function LiveStream() {
                   }`}
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={stream.thumbnail || "/placeholder.svg"}
-                      alt={stream.title}
+                      alt={stream.title}  
+                      width={64}
+                      height={48}
                       className="w-16 h-12 object-cover rounded"
                     />
                     {stream.isLive && (

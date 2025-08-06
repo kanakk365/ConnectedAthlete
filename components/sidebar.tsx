@@ -1,6 +1,7 @@
 "use client"
 
 import type React from "react"
+import type { LucideIcon } from "lucide-react"
 
 import { Home, User, FileText, ComponentIcon as ImageIconComponent, Activity, Menu } from "lucide-react"
 
@@ -21,7 +22,7 @@ export default function Sidebar() {
     isActive = false,
   }: {
     href: string
-    icon: any
+    icon: LucideIcon
     children: React.ReactNode
     isActive?: boolean
   }) {
