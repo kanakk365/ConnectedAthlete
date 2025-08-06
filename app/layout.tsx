@@ -5,9 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "KokonutUI Dashboard",
-  description: "A modern dashboard with theme switching",
-}
+  title: "Connected Athlete",
+    description: "Connected Athlete is a modern platform for athletes and coaches to track progress, join live training sessions, manage schedules, and stay connected with their teams.",
+  }
 
 export default function RootLayout({
   children,
