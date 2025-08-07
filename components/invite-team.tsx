@@ -42,26 +42,26 @@ export default function InviteTeam() {
   const getRoleIcon = (role: string) => {
     switch (role) {
       case "doctor":
-        return <Stethoscope className="w-4 h-4 text-red-500" />
+        return <Stethoscope className="w-4 h-4 text-destructive" />
       case "coach":
-        return <Whistle className="w-4 h-4 text-blue-500" />
+        return <Whistle className="w-4 h-4 text-primary" />
       case "therapist":
-        return <Users className="w-4 h-4 text-green-500" />
+        return <Users className="w-4 h-4 text-chart-2" />
       default:
-        return <Users className="w-4 h-4 text-gray-500" />
+        return <Users className="w-4 h-4 text-muted-foreground" />
     }
   }
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
-        return "bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400"
+        return "bg-chart-2/10 text-chart-2"
       case "pending":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400"
+        return "bg-chart-4/10 text-chart-4"
       case "inactive":
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400"
+        return "bg-muted text-muted-foreground"
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400"
+        return "bg-muted text-muted-foreground"
     }
   }
 
@@ -74,18 +74,18 @@ export default function InviteTeam() {
   }
 
   return (
-    <Card className="bg-white dark:bg-[#0F0F12] border border-gray-200 dark:border-[#1F1F23]">
+    <Card className="bg-card border-border">
       <CardHeader className="pb-4">
-        <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-          <UserPlus className="w-5 h-5 text-blue-500" />
+        <CardTitle className="text-lg font-semibold text-card-foreground flex items-center gap-2">
+          <UserPlus className="w-5 h-5 text-primary" />
           Team Members
         </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           {/* Invite Form */}
-          <div className="space-y-3 p-3 bg-gray-50 dark:bg-[#1F1F23] rounded-lg">
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">Invite New Member</h4>
+          <div className="space-y-3 p-3 bg-muted rounded-lg">
+            <h4 className="text-sm font-medium text-card-foreground">Invite New Member</h4>
             <div className="flex gap-2">
               <Input
                 type="email"
@@ -97,14 +97,14 @@ export default function InviteTeam() {
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value as "doctor" | "coach" | "therapist")}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-[#0F0F12] text-gray-900 dark:text-white text-sm"
+                className="px-3 py-2 border border-input rounded-md bg-background text-foreground text-sm"
               >
                 <option value="doctor">Doctor</option>
                 <option value="coach">Coach</option>
                 <option value="therapist">Therapist</option>
               </select>
             </div>
-            <Button onClick={handleInvite} className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+            <Button onClick={handleInvite} className="w-full">
               <Mail className="w-4 h-4 mr-2" />
               Send Invitation
             </Button>
@@ -112,17 +112,17 @@ export default function InviteTeam() {
 
           {/* Current Team Members */}
           <div className="space-y-2">
-            <h4 className="text-sm font-medium text-gray-900 dark:text-white">Current Team</h4>
+            <h4 className="text-sm font-medium text-card-foreground">Current Team</h4>
             <div className="space-y-2">
               {teamMembers.map((member) => (
-                <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg bg-gray-50 dark:bg-[#1F1F23]">
-                  <Image src={member.avatar || "/placeholder.svg"} alt={member.name} width={32} height={32} className="w-8 h-8 rounded-full" />
+                <div key={member.id} className="flex items-center gap-3 p-2 rounded-lg bg-muted">
+                  <Image src={member.avatar || "/placeholder.svg"} alt={member.name} width={11} height={11} className="w-3 h-3 rounded-full" />
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       {getRoleIcon(member.role)}
-                      <p className="text-sm font-medium text-gray-900 dark:text-white truncate">{member.name}</p>
+                      <p className="text-sm font-medium text-card-foreground truncate">{member.name}</p>
                     </div>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{member.email}</p>
+                    <p className="text-xs text-muted-foreground truncate">{member.email}</p>
                   </div>
                   <span className={`px-2 py-1 text-xs rounded-full ${getStatusColor(member.status)}`}>
                     {member.status}

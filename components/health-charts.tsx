@@ -262,23 +262,23 @@ function HealthChartCard({
   }
 
   return (
-    <Card className="bg-white dark:bg-[#0F0F12] border border-gray-200 dark:border-[#1F1F23]">
+    <Card className="bg-card border border-border">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-sm font-medium text-gray-600 dark:text-gray-400 flex items-center gap-2">
+          <CardTitle className="text-sm font-medium text-muted-foreground flex items-center gap-2">
             {icon}
             {title}
             <Badge
               variant="outline"
-              className="text-green-500 bg-green-500/10 border-none ml-2"
+              className="text-primary bg-primary/10 border-none ml-2"
             >
               <TrendingUp className="h-4 w-4" />
               <span>{trend}</span>
             </Badge>
           </CardTitle>
           <div className="text-right">
-            <div className="text-2xl font-bold text-gray-900 dark:text-white">{value}</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">{unit}</div>
+            <div className="text-2xl font-bold text-foreground">{value}</div>
+            <div className="text-xs text-muted-foreground">{unit}</div>
           </div>
         </div>
       </CardHeader>

@@ -48,22 +48,22 @@ export default function Announcements() {
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "high":
-        return "border-l-red-500 bg-red-50 dark:bg-red-900/10"
+        return "border-l-primary bg-primary/10"
       case "medium":
-        return "border-l-yellow-500 bg-yellow-50 dark:bg-yellow-900/10"
+        return "border-l-chart-4 bg-chart-4/10"
       case "low":
-        return "border-l-green-500 bg-green-50 dark:bg-green-900/10"
+        return "border-l-chart-2 bg-chart-2/10"
       default:
-        return "border-l-gray-500 bg-gray-50 dark:bg-gray-900/10"
+        return "border-l-border bg-muted"
     }
   }
 
   return (
-    <Card className="bg-white dark:bg-[#0F0F12] border border-gray-200 dark:border-[#1F1F23]">
+    <Card className="bg-card border-border">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
-            <Megaphone className="w-5 h-5 text-blue-500" />
+          <CardTitle className="text-lg font-semibold text-card-foreground flex items-center gap-2">
+            <Megaphone className="w-5 h-5 text-primary" />
             Announcements
           </CardTitle>
           <Button variant="outline" size="sm">
@@ -80,16 +80,16 @@ export default function Announcements() {
             >
               <div className="flex items-start justify-between mb-2">
                 <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-semibold text-gray-900 dark:text-white">{announcement.title}</h4>
-                  {announcement.pinned && <Pin className="w-3 h-3 text-blue-500" />}
+                  <h4 className="text-sm font-semibold text-card-foreground">{announcement.title}</h4>
+                  {announcement.pinned && <Pin className="w-3 h-3 text-primary" />}
                 </div>
-                <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <Clock className="w-3 h-3" />
                   {announcement.timestamp}
                 </div>
               </div>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2">{announcement.content}</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">By {announcement.author}</p>
+              <p className="text-sm text-muted-foreground mb-2">{announcement.content}</p>
+              <p className="text-xs text-muted-foreground">By {announcement.author}</p>
             </div>
           ))}
         </div>

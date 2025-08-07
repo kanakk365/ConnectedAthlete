@@ -32,8 +32,8 @@ export default function Sidebar() {
         onClick={handleNavigation}
         className={`flex items-center px-3 py-2 text-sm rounded-md transition-colors ${
           isActive
-            ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-            : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-[#1F1F23]"
+                    ? "bg-primary/10 text-primary"
+        : "text-muted-foreground hover:text-foreground hover:bg-muted"
         }`}
       >
         <Icon className="h-4 w-4 mr-3 flex-shrink-0" />
@@ -46,14 +46,14 @@ export default function Sidebar() {
     <>
       <button
         type="button"
-        className="lg:hidden fixed top-4 left-4 z-[70] p-2 rounded-lg bg-white dark:bg-[#0F0F12] shadow-md"
+        className="lg:hidden fixed top-4 left-4 z-[70] p-2 rounded-lg bg-background shadow-md"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
-        <Menu className="h-5 w-5 text-gray-600 dark:text-gray-300" />
+        <Menu className="h-5 w-5 text-muted-foreground" />
       </button>
       <nav
         className={`
-                fixed inset-y-0 left-0 z-[70] w-64 bg-white dark:bg-[#0F0F12] transform transition-transform duration-200 ease-in-out
+                fixed inset-y-0 left-0 z-[70] w-64 bg-sidebar transform transition-transform duration-200 ease-in-out
                 lg:translate-x-0 lg:static lg:w-64 border-r border-gray-200 dark:border-[#1F1F23]
                 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
             `}
@@ -64,11 +64,11 @@ export default function Sidebar() {
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <Activity className="w-5 h-5 text-white" />
               </div>
-              <span className="text-lg font-semibold text-gray-900 dark:text-white">Connected Athletes</span>
+              <span className="text-lg font-semibold text-sidebar-foreground">Connected Athletes</span>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto py-4 px-4">
+          <div className="flex-1 overflow-y-auto py-4 px-4 scrollbar-thin">
             <div className="space-y-2">
               <NavItem href="/dashboard" icon={Home} isActive>
                 Dashboard
