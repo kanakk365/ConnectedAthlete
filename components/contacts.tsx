@@ -64,18 +64,18 @@ export default function Contacts() {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             placeholder="Search..."
-            className="pl-10 border-none rounded-lg text-sm bg-dark"
+            className="pl-10 border-none rounded-lg text-sm !bg-[#0f0f1a]"
           />
         </div>
 
         {/* Contacts List */}
-        <div className="space-y-3 flex-1 overflow-y-auto scrollbar-thin">
+        <div className="space-y-3 flex-1 overflow-y-auto scrollbar-thin divide-y divide-border ">
           {contacts.map((contact) => (
             <div
               key={contact.id}
-              className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors"
+              className="flex items-center gap-3 py-2 cursor-pointer transition-colors"
             >
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-dark flex items-center justify-center">
+              <div className="shrink-0 w-8 h-8 rounded-full bg-[#0f0f1a] flex items-center justify-center">
                 <span className="text-sm font-semibold text-primary">
                   {contact.initials}
                 </span>

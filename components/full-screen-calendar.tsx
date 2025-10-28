@@ -16,7 +16,7 @@ import {
   startOfToday,
   startOfWeek,
 } from "date-fns"
-import { ChevronLeftIcon, ChevronRightIcon, Search } from "lucide-react"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -90,11 +90,11 @@ export function FullScreenCalendar({ data }: FullScreenCalendarProps) {
         </div>
 
         <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
-          <Button variant="outline" size="icon" className="hidden lg:flex">
+          {/* <Button variant="outline" size="icon" className="hidden lg:flex">
             <Search size={16} strokeWidth={2} aria-hidden="true" />
-          </Button>
-
-          <Separator orientation="vertical" className="hidden h-6 lg:block" />
+          </Button> */}
+{/* 
+          <Separator orientation="vertical" className="hidden h-6 lg:block" /> */}
 
           <div className="inline-flex w-full -space-x-px rounded-lg shadow-sm shadow-black/5 md:w-auto rtl:space-x-reverse">
             <Button
@@ -123,8 +123,8 @@ export function FullScreenCalendar({ data }: FullScreenCalendarProps) {
               <ChevronRightIcon size={16} strokeWidth={2} aria-hidden="true" />
             </Button>
           </div>
-
-          <Separator orientation="vertical" className="hidden h-6 md:block" />
+{/* 
+          <Separator orientation="vertical" className="hidden h-6 md:block" /> */}
           <Separator orientation="horizontal" className="block w-full md:hidden" />
           
         </div>

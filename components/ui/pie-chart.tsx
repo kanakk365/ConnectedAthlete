@@ -98,7 +98,7 @@ export function ChartPieDonut() {
               <div key={item.name} className="flex items-center justify-between gap-2 lg:gap-3">
                 <div className="flex items-center gap-2">
                 <div
-                  className="w-7 h-7 rounded flex-shrink-0"
+                  className="w-7 h-7 rounded shrink-0"
                   style={{ backgroundColor: item.fill }}
                 />
                 <div>

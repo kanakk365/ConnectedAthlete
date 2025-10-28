@@ -1,17 +1,22 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { FileText, ImageIcon, Download, Eye, Upload, Clock } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import {
+  FileText,
+  ImageIcon,
+  Download,
+  Upload,
+} from "lucide-react";
 
 interface FileUpload {
-  id: string
-  name: string
-  type: "medical" | "photo" | "document"
-  size: string
-  uploadedBy: string
-  timestamp: string
-  url: string
+  id: string;
+  name: string;
+  type: "medical" | "photo" | "document";
+  size: string;
+  uploadedBy: string;
+  timestamp: string;
+  url: string;
 }
 
 const recentUploads: FileUpload[] = [
@@ -51,34 +56,22 @@ const recentUploads: FileUpload[] = [
     timestamp: "2 days ago",
     url: "#",
   },
-]
+];
 
 export default function FileUploads() {
   const getFileIcon = (type: string) => {
     switch (type) {
       case "medical":
-        return <FileText className="w-4 h-4 text-destructive" />
+        return <FileText className="w-4 h-4 text-destructive" />;
       case "photo":
-        return <ImageIcon className="w-4 h-4 text-primary" />
+        return <ImageIcon className="w-4 h-4 text-primary" />;
       case "document":
-        return <FileText className="w-4 h-4 text-chart-2" />
+        return <FileText className="w-4 h-4 text-chart-2" />;
       default:
-        return <FileText className="w-4 h-4 text-muted-foreground" />
+        return <FileText className="w-4 h-4 text-muted-foreground" />;
     }
-  }
+  };
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case "medical":
-        return "bg-destructive/10 text-destructive"
-      case "photo":
-        return "bg-primary/10 text-primary"
-      case "document":
-        return "bg-chart-2/10 text-chart-2"
-      default:
-        return "bg-muted text-muted-foreground"
-    }
-  }
 
   return (
     <Card className="bg-card border-border h-full flex flex-col">
@@ -88,39 +81,27 @@ export default function FileUploads() {
             <Upload className="w-5 h-5 text-primary" />
             Recent Uploads
           </CardTitle>
-          <Button variant="outline" size="sm">
+          <Button  className="text-sm py-0 cursor-pointer ">
             View All
           </Button>
         </div>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
-        <div className="space-y-3 flex-1 overflow-y-auto scrollbar-thin">
+        <div className=" flex-1 overflow-y-auto scrollbar-thin divide-y divide-border ">
           {recentUploads.map((file) => (
             <div
               key={file.id}
-              className="flex items-center gap-3 p-3 rounded-lg bg-muted hover:bg-muted/80 transition-colors"
+              className="flex items-center gap-3 p-3  transition-colors"
             >
-              <div className="flex-shrink-0">{getFileIcon(file.type)}</div>
+              <div className="shrink-0">{getFileIcon(file.type)}</div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <p className="text-sm font-medium text-card-foreground truncate">{file.name}</p>
-                  <span className={`px-2 py-0.5 text-xs rounded-full ${getTypeColor(file.type)}`}>{file.type}</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                  <span>{file.size}</span>
-                  <span>•</span>
-                  <span>by {file.uploadedBy}</span>
-                  <span>•</span>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    {file.timestamp}
-                  </div>
+                  <p className="text-sm font-medium text-card-foreground truncate">
+                    {file.name}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-1">
-                <Button variant="ghost" size="sm" className="p-1 h-8 w-8">
-                  <Eye className="w-4 h-4" />
-                </Button>
                 <Button variant="ghost" size="sm" className="p-1 h-8 w-8">
                   <Download className="w-4 h-4" />
                 </Button>
@@ -138,5 +119,5 @@ export default function FileUploads() {
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

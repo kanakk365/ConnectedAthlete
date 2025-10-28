@@ -6,62 +6,62 @@ import Image from "next/image";
 const galleryImages = [
   {
     id: 1,
-    src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=300&fit=crop",
+    src: "/gallery/g1.png",
     alt: "Gym training",
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=300&fit=crop",
+    src: "/gallery/g2.png",
     alt: "Athlete training",
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1461897104934-dce0a28276e6?w=500&h=300&fit=crop",
+    src: "/gallery/g3.png",
     alt: "Stadium",
   },
   {
     id: 4,
-    src: "https://images.unsplash.com/photo-1461912390831-6aee6fbb3c21?w=500&h=300&fit=crop",
+    src: "/gallery/g4.png",
     alt: "Soccer player",
   },
   {
     id: 5,
-    src: "https://images.unsplash.com/photo-1476480862245-80cab078891f?w=500&h=300&fit=crop",
+    src: "/gallery/g5.png",
     alt: "Indoor stadium",
   },
   {
     id: 6,
-    src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=300&fit=crop",
+    src: "/gallery/g6.png",
     alt: "Runner",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1521575107034-e3fb11b08e15?w=500&h=300&fit=crop",
+    src: "/gallery/g7.png",
     alt: "Team sports",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=300&fit=crop",
+    src: "/gallery/g8.png",
     alt: "Fitness",
   },
   {
     id: 9,
-    src: "https://images.unsplash.com/photo-1476480862245-80cab078891f?w=500&h=300&fit=crop",
+    src: "/gallery/g9.png",
     alt: "Training facility",
   },
   {
     id: 10,
-    src: "https://images.unsplash.com/photo-1461912390831-6aee6fbb3c21?w=500&h=300&fit=crop",
+    src: "/gallery/g10.png",
     alt: "Sports action",
   },
   {
     id: 11,
-    src: "https://images.unsplash.com/photo-1517836357463-d25ddfcbf042?w=500&h=300&fit=crop",
+    src: "/gallery/g11.png",
     alt: "Athlete",
   },
   {
     id: 12,
-    src: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500&h=300&fit=crop",
+    src: "/gallery/g12.png",
     alt: "Sports event",
   },
 ];
@@ -83,14 +83,13 @@ export default function Gallery() {
         {galleryImages.map((image) => (
           <div
             key={image.id}
-            className="group relative overflow-hidden rounded-lg"
+            className="group relative h-40 overflow-hidden rounded-lg"
           >
             <Image
               src={image.src}
               alt={image.alt}
               fill
-              sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
-              className="h-32 w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black/0 transition-all duration-300 group-hover:bg-black/20" />
           </div>

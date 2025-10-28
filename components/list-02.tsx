@@ -166,7 +166,7 @@ export default function List02({ transactions = TRANSACTIONS, className }: List0
             "w-full flex items-center justify-center gap-2",
             "py-2 px-3 rounded-lg",
             "text-xs font-medium",
-            "bg-gradient-to-r from-zinc-900 to-zinc-800",
+            "bg-linear-to-r from-zinc-900 to-zinc-800",
             "dark:from-zinc-50 dark:to-zinc-200",
             "text-zinc-50 dark:text-zinc-900",
             "hover:from-zinc-800 hover:to-zinc-700",

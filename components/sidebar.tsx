@@ -36,7 +36,7 @@ export default function Sidebar() {
         : "text-muted-foreground hover:text-foreground hover:bg-muted"
         }`}
       >
-        <Icon className="h-4 w-4 mr-3 flex-shrink-0" />
+        <Icon className="h-4 w-4 mr-3 shrink-0" />
         {children}
       </Link>
     )
@@ -46,14 +46,14 @@ export default function Sidebar() {
     <>
       <button
         type="button"
-        className="lg:hidden fixed top-4 left-4 z-[70] p-2 rounded-lg bg-background shadow-md"
+        className="lg:hidden fixed top-4 left-4 z-70 p-2 rounded-lg bg-background shadow-md"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         <Menu className="h-5 w-5 text-muted-foreground" />
       </button>
       <nav
         className={`
-                fixed inset-y-0 left-0 z-[70] w-64 bg-sidebar transform transition-transform duration-200 ease-in-out
+                fixed inset-y-0 left-0 z-70 w-64 bg-sidebar transform transition-transform duration-200 ease-in-out
                 lg:translate-x-0 lg:static lg:w-64 border-r border-gray-200 dark:border-[#1F1F23]
                 ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
             `}
@@ -61,7 +61,7 @@ export default function Sidebar() {
         <div className="h-full flex flex-col">
           <div className="h-16 px-6 flex items-center border-b border-gray-200 dark:border-[#1F1F23]">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
                 <Activity className="w-5 h-5 text-white" />
               </div>
               <span className="text-lg font-semibold text-sidebar-foreground">Connected Athletes</span>
@@ -92,7 +92,7 @@ export default function Sidebar() {
 
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-[65] lg:hidden"
+          className="fixed inset-0 bg-black bg-opacity-50 z-65 lg:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
