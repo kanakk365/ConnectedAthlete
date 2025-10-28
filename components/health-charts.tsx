@@ -61,8 +61,8 @@ export default function HealthCharts() {
                 <Image
                   src={image}
                   alt={title}
-                  width={40}
-                  height={40}
+                  width={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
+                  height={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
                   className="object-contain"
                 />
               </div>

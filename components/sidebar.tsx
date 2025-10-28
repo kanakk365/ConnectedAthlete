@@ -1,18 +1,25 @@
-"use client"
+"use client";
 
-import type React from "react"
-import type { LucideIcon } from "lucide-react"
+import type React from "react";
+import type { LucideIcon } from "lucide-react";
 
-import { Home, User, FileText, ComponentIcon as ImageIconComponent, Activity, Menu } from "lucide-react"
+import {
+  Home,
+  User,
+  FileText,
+  ComponentIcon as ImageIconComponent,
+  Activity,
+  Menu,
+} from "lucide-react";
 
-import Link from "next/link"
-import { useState } from "react"
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Sidebar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   function handleNavigation() {
-    setIsMobileMenuOpen(false)
+    setIsMobileMenuOpen(false);
   }
 
   function NavItem({
@@ -21,10 +28,10 @@ export default function Sidebar() {
     children,
     isActive = false,
   }: {
-    href: string
-    icon: LucideIcon
-    children: React.ReactNode
-    isActive?: boolean
+    href: string;
+    icon: LucideIcon;
+    children: React.ReactNode;
+    isActive?: boolean;
   }) {
     return (
       <Link
@@ -32,14 +39,14 @@ export default function Sidebar() {
         onClick={handleNavigation}
         className={`flex items-center px-3 py-2 text-sm rounded-md transition-colors ${
           isActive
-                    ? "bg-primary/10 text-primary"
-        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            ? "bg-[#9161ff] text-black"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted"
         }`}
       >
         <Icon className="h-4 w-4 mr-3 shrink-0" />
         {children}
       </Link>
-    )
+    );
   }
 
   return (
@@ -61,10 +68,9 @@ export default function Sidebar() {
         <div className="h-full flex flex-col">
           <div className="h-16 px-6 flex items-center border-b border-gray-200 dark:border-[#1F1F23]">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-linear-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                <Activity className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-semibold text-sidebar-foreground">Connected Athletes</span>
+              <span className="text-lg font-semibold text-sidebar-foreground">
+                Connected Athletes
+              </span>
             </div>
           </div>
 
@@ -97,5 +103,5 @@ export default function Sidebar() {
         />
       )}
     </>
-  )
+  );
 }
