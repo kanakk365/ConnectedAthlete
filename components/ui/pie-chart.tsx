@@ -18,7 +18,7 @@ import {
 
 export const description = "A sleep data donut chart";
 
-const chartData = [
+const sampleChartData = [
   { name: "Deep Sleep", value: 2.5, fill: "#6366f1" },
   { name: "Light Sleep", value: 3.2, fill: "#ec4899" },
   { name: "REM Sleep", value: 1.1, fill: "#8b5cf6" },
@@ -44,8 +44,11 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function ChartPieDonut() {
-  const totalSleep = chartData.reduce((sum, item) => sum + item.value, 0);
+type SleepSlice = { name: string; value: number; fill: string };
+
+export function ChartPieDonut({ data }: { data?: SleepSlice[] }) {
+  const used = data && data.length ? data : sampleChartData;
+  const totalSleep = used.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <Card className="flex flex-col">
@@ -66,7 +69,7 @@ export function ChartPieDonut() {
                   content={<ChartTooltipContent hideLabel />}
                 />
                 <Pie
-                  data={chartData}
+                  data={used}
                   dataKey="value"
                   nameKey="name"
                   innerRadius={100}
@@ -74,7 +77,7 @@ export function ChartPieDonut() {
                   cx="50%"
                   cy="50%"
                 >
-                  {chartData.map((entry, index) => (
+                  {used.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
                   <text
@@ -94,7 +97,7 @@ export function ChartPieDonut() {
 
           {/* Legend on the right */}
           <div className="flex flex-row w-[40%] lg:flex-col justify-start lg:justify-center flex-wrap gap-4 lg:gap-6 ">
-            {chartData.map((item) => (
+            {used.map((item) => (
               <div key={item.name} className="flex items-center justify-between gap-2 lg:gap-3">
                 <div className="flex items-center gap-2">
                 <div

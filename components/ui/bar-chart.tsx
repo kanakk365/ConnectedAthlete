@@ -17,7 +17,7 @@ import {
 
 export const description = "A bar chart with steps data"
 
-const chartData = [
+const sampleChartData = [
   { day: "Mon", steps: 2400 },
   { day: "Tue", steps: 3200 },
   { day: "Wed", steps: 2800 },
@@ -34,7 +34,9 @@ const chartConfig = {
   },
 } satisfies ChartConfig
 
-export function ChartBarDefault() {
+type StepsPoint = { day: string; steps: number }
+
+export function ChartBarDefault({ data }: { data?: StepsPoint[] }) {
   return (
     <Card>
       <CardHeader>
@@ -43,7 +45,7 @@ export function ChartBarDefault() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
-          <BarChart accessibilityLayer data={chartData}>
+          <BarChart accessibilityLayer data={data && data.length ? data : sampleChartData}>
             <CartesianGrid vertical={false} />
             <XAxis
               dataKey="day"
