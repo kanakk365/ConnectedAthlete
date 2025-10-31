@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChartBarDefault } from "@/components/ui/bar-chart";
 import { ChartPieDonut } from "@/components/ui/pie-chart";
 import { useCallback, useEffect, useState } from "react";
-import { fitbitFetch, isAuthorized } from "@/lib/fitbit/api";
+import { isAuthorized } from "@/lib/fitbit/api";
 import { getActivitiesSummaryToday, getHeart7d, getSleepToday, getSteps7d } from "@/lib/fitbit/endpoints";
 import { clearPendingPkce } from "@/lib/fitbit/pkce";
 import { clearTokens } from "@/lib/fitbit/token-store";
@@ -20,7 +20,6 @@ type MetricCard = { title: string; value: string; unit: string; image: string; c
 export default function HealthCharts() {
   const router = useRouter();
   const [connected, setConnected] = useState(false);
-  const [profile, setProfile] = useState<unknown | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [metrics, setMetrics] = useState<MetricCard[]>([
     { title: "Calories", value: "—", unit: "Kcal", image: "/calories.png", color: "#dc767c" },
@@ -98,19 +97,12 @@ export default function HealthCharts() {
       if (!connected) return;
       try {
         setError(null);
-        const [profileRes, stepsJson, heartJson, sleepJson, actJson] = await Promise.all([
-          (async () => {
-            const r = await fitbitFetch("/1/user/-/profile.json");
-            if (!r.ok) throw new Error(`Fitbit error ${r.status}`);
-            return r.json();
-          })(),
+        const [stepsJson, heartJson, sleepJson, actJson] = await Promise.all([
           getSteps7d(),
           getHeart7d(),
           getSleepToday(),
           getActivitiesSummaryToday(),
         ]);
-
-        setProfile(profileRes);
 
         // Steps today
         const stepsSeries = stepsJson["activities-steps"] || [];
@@ -186,8 +178,7 @@ export default function HealthCharts() {
       )}
       {connected && (
         <div className="rounded-md border p-4">
-          <div className="mb-2 flex items-center justify-between">
-            <p className="text-sm font-medium">Fitbit profile (sample)</p>
+          <div className="flex items-center justify-end">
             <button
               onClick={() => { clearTokens(); clearPendingPkce(); setConnected(false); router.push('/dashboard'); }}
               className="inline-flex items-center rounded bg-red-600 px-2 py-1 text-xs text-white"
@@ -195,10 +186,7 @@ export default function HealthCharts() {
               Disconnect Fitbit
             </button>
           </div>
-          {error && <p className="text-sm text-red-600">{error}</p>}
-          {profile !== null && (
-            <pre className="max-h-64 overflow-auto text-xs">{JSON.stringify(profile, null, 2)}</pre>
-          )}
+          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         </div>
       )}
       {/* Top Row - Metric Cards */}
