@@ -7,12 +7,13 @@ function buildTargetUrl(pathSegments: string[], search: string): string {
 	return `${FITBIT_API_BASE}${path}${search ? `?${search}` : ""}`;
 }
 
-export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
 	const token = req.headers.get("x-fitbit-token");
 	if (!token) {
 		return new Response("Missing x-fitbit-token", { status: 401 });
 	}
-	const url = buildTargetUrl(params.path || [], req.nextUrl.searchParams.toString());
+	const { path } = await params;
+	const url = buildTargetUrl(path || [], req.nextUrl.searchParams.toString());
 	const res = await fetch(url, {
 		method: "GET",
 		headers: { Authorization: `Bearer ${token}` },
@@ -24,12 +25,13 @@ export async function GET(req: NextRequest, { params }: { params: { path: string
 	});
 }
 
-export async function POST(req: NextRequest, { params }: { params: { path: string[] } }) {
+export async function POST(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
 	const token = req.headers.get("x-fitbit-token");
 	if (!token) {
 		return new Response("Missing x-fitbit-token", { status: 401 });
 	}
-	const url = buildTargetUrl(params.path || [], req.nextUrl.searchParams.toString());
+	const { path } = await params;
+	const url = buildTargetUrl(path || [], req.nextUrl.searchParams.toString());
 	const body = await req.text();
 	const res = await fetch(url, {
 		method: "POST",
