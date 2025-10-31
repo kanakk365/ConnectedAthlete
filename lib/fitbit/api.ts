@@ -8,7 +8,7 @@ export function isAuthorized(): boolean {
 }
 
 export async function getValidAccessToken(): Promise<string | null> {
-	let tokens = loadTokens();
+	const tokens = loadTokens();
 	if (!tokens) return null;
 	if (!isAccessTokenExpired(tokens)) return tokens.accessToken;
 
