@@ -28,13 +28,6 @@ type LineChartProps = {
   unit?: string;
 };
 
-const defaultChartConfig = {
-  value: {
-    label: "Value",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig;
-
 export function LineChartComponent({
   title,
   description,

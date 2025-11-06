@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { exchangeCodeForToken } from "@/lib/fitbit/client";
 import { clearPendingPkce, getPendingPkce } from "@/lib/fitbit/pkce";
 import { FITBIT_CLIENT_ID, FITBIT_REDIRECT_URI } from "@/lib/fitbit/config";
 
-export default function FitbitCallbackPage() {
+function FitbitCallbackContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
@@ -93,6 +93,23 @@ export default function FitbitCallbackPage() {
         </button>
       </div>
     </div>
+  );
+}
+
+export default function FitbitCallbackPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="text-center">
+            <div className="mb-4 text-lg font-semibold">Connecting to Fitbit...</div>
+            <div className="text-sm text-muted-foreground">Please wait while we complete the authorization.</div>
+          </div>
+        </div>
+      }
+    >
+      <FitbitCallbackContent />
+    </Suspense>
   );
 }
 
