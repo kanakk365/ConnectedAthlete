@@ -34,9 +34,9 @@ export default function HealthCharts() {
     { title: "Step Count", value: "—", unit: "Steps", image: "/step.png", color: "#547aff" },
     { title: "Sleep", value: "—", unit: "Hours", image: "/sleep.png", color: "#6f73e2" },
     { title: "Heart Rate", value: "—", unit: "BPM", image: "/heart.png", color: "#9161ff" },
-    { title: "Weight", value: "—", unit: "kg", image: "/heart.png", color: "#f59e0b" },
-    { title: "SpO2", value: "—", unit: "%", image: "/heart.png", color: "#10b981" },
-    { title: "Temperature", value: "—", unit: "°C", image: "/heart.png", color: "#ef4444" },
+    { title: "Weight", value: "—", unit: "kg", image: "/heart.png", color: "#6366f1" },
+    { title: "SpO2", value: "—", unit: "%", image: "/heart.png", color: "#06b6d4" },
+    { title: "Temperature", value: "—", unit: "°C", image: "/heart.png", color: "#ec4899" },
     { title: "Distance", value: "—", unit: "km", image: "/step.png", color: "#8b5cf6" },
   ]);
   const [weeklySteps, setWeeklySteps] = useState<Array<{ day: string; steps: number }>>([]);
@@ -138,9 +138,9 @@ export default function HealthCharts() {
       { title: "Step Count", value: "8,432", unit: "Steps", image: "/step.png", color: "#547aff" },
       { title: "Sleep", value: "7.85", unit: "Hours", image: "/sleep.png", color: "#6f73e2" },
       { title: "Heart Rate", value: "62", unit: "BPM", image: "/heart.png", color: "#9161ff" },
-      { title: "Weight", value: "72.5", unit: "kg", image: "/heart.png", color: "#f59e0b" },
-      { title: "SpO2", value: "97.2", unit: "%", image: "/heart.png", color: "#10b981" },
-      { title: "Temperature", value: "36.8", unit: "°C", image: "/heart.png", color: "#ef4444" },
+      { title: "Weight", value: "72.5", unit: "kg", image: "/heart.png", color: "#6366f1" },
+      { title: "SpO2", value: "97.2", unit: "%", image: "/heart.png", color: "#06b6d4" },
+      { title: "Temperature", value: "36.8", unit: "°C", image: "/heart.png", color: "#ec4899" },
       { title: "Distance", value: "5.43", unit: "km", image: "/step.png", color: "#8b5cf6" },
     ]);
   }, []);
