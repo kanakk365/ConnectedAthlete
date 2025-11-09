@@ -13,6 +13,7 @@ import {
 
 import Link from "next/link";
 import { useState } from "react";
+import type { LucideIcon } from "lucide-react";
 
 export default function Sidebar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function Sidebar() {
     children,
   }: {
     href: string;
-    icon: any;
+    icon: LucideIcon;
     children: React.ReactNode;
   }) {
     return (
