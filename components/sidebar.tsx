@@ -6,6 +6,7 @@ import {
   FileText,
   ComponentIcon as ImageIconComponent,
   Activity,
+  Heart,
   Menu,
   Settings,
   HelpCircle,
@@ -86,6 +87,9 @@ export default function Sidebar() {
               </NavItem>
               <NavItem href="/sensors" icon={Activity}>
                 Sensors
+              </NavItem>
+              <NavItem href="/withings" icon={Heart}>
+                Withings
               </NavItem>
             </div>
           </div>
