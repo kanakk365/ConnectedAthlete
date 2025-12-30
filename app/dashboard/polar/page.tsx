@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Layout from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
-import { WeightLineChart } from "@/components/ui/weight-line-chart";
 import { HeartRateLineChart } from "@/components/ui/heart-rate-line-chart";
 import { SleepDurationBarChart } from "@/components/ui/sleep-duration-bar-chart";
 import { CaloriesBarChart } from "@/components/ui/calories-bar-chart";
