@@ -91,6 +91,9 @@ export default function Sidebar() {
               <NavItem href="/withings" icon={Heart}>
                 Withings
               </NavItem>
+              <NavItem href="/dashboard/polar" icon={Activity}>
+                Polar
+              </NavItem>
             </div>
           </div>
           <div className="px-4 py-4 border-t border-border">

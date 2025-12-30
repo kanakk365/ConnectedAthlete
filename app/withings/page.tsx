@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Layout from "@/components/layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { WeightLineChart } from "@/components/ui/weight-line-chart";
 import { HeartRateLineChart } from "@/components/ui/heart-rate-line-chart";
@@ -309,90 +310,92 @@ export default function WithingsPage() {
     }, [connected]);
 
     return (
-        <div className="space-y-6 p-6">
-            <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold">Withings Health Data</h1>
-                {connected && (
-                    <button
-                        onClick={() => { clearTokens(); setConnected(false); router.refresh(); }}
-                        className="inline-flex items-center rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
-                    >
-                        Disconnect Withings
-                    </button>
-                )}
-            </div>
-
-            {!connected && (
-                <div className="flex items-center justify-between rounded-md border p-4">
-                    <div>
-                        <p className="text-sm text-muted-foreground">Connect your Withings account to see live data.</p>
-                    </div>
-                    <button onClick={onConnect} className="inline-flex items-center rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
-                        Connect Withings
-                    </button>
-                </div>
-            )}
-
-            {error && (
-                <div className="rounded-md border border-red-200 bg-red-50 p-4">
-                    <p className="text-sm text-red-600">{error}</p>
-                </div>
-            )}
-
-            {loading && (
-                <div className="rounded-md border p-4 text-center">
-                    <p className="text-sm text-muted-foreground">Loading Withings data...</p>
-                </div>
-            )}
-
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-                {metrics.map(({ title, value, unit, image, color }) => (
-                    <Card
-                        key={title}
-                        className="relative overflow-hidden border-0 p-0 text-white"
-                        style={{ backgroundColor: color }}
-                    >
-                        <CardContent className="relative flex h-full flex-col justify-center p-6">
-                            <div>
-                                <p className="text-sm font-medium text-white/70">{title}</p>
-                                <p className="mt-3 text-3xl font-semibold leading-none">
-                                    {value}
-                                </p>
-                                <p className="text-xs font-medium text-white/60">
-                                    {unit}
-                                </p>
-                            </div>
-                            <div className="absolute bottom-4 right-4">
-                                <Image
-                                    src={image}
-                                    alt={title}
-                                    width={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
-                                    height={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
-                                    className="object-contain"
-                                />
-                            </div>
-                        </CardContent>
-                    </Card>
-                ))}
-            </div>
-
+        <Layout>
             <div className="space-y-6">
-                <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
-                    <ChartBarDefault data={stepsData} />
-                    <WeightLineChart data={weightData} />
+                <div className="flex items-center justify-between">
+                    <h1 className="text-2xl font-bold">Withings Health Data</h1>
+                    {connected && (
+                        <button
+                            onClick={() => { clearTokens(); setConnected(false); router.refresh(); }}
+                            className="inline-flex items-center rounded bg-red-600 px-3 py-2 text-sm text-white hover:bg-red-700"
+                        >
+                            Disconnect Withings
+                        </button>
+                    )}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                    <HeartRateLineChart data={heartRateData} />
-                    <SpO2LineChart data={spo2Data} />
-                    <SleepDurationBarChart data={sleepData} />
+                {!connected && (
+                    <div className="flex items-center justify-between rounded-md border p-4">
+                        <div>
+                            <p className="text-sm text-muted-foreground">Connect your Withings account to see live data.</p>
+                        </div>
+                        <button onClick={onConnect} className="inline-flex items-center rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
+                            Connect Withings
+                        </button>
+                    </div>
+                )}
+
+                {error && (
+                    <div className="rounded-md border border-red-200 bg-red-50 p-4">
+                        <p className="text-sm text-red-600">{error}</p>
+                    </div>
+                )}
+
+                {loading && (
+                    <div className="rounded-md border p-4 text-center">
+                        <p className="text-sm text-muted-foreground">Loading Withings data...</p>
+                    </div>
+                )}
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
+                    {metrics.map(({ title, value, unit, image, color }) => (
+                        <Card
+                            key={title}
+                            className="relative overflow-hidden border-0 p-0 text-white"
+                            style={{ backgroundColor: color }}
+                        >
+                            <CardContent className="relative flex h-full flex-col justify-center p-6">
+                                <div>
+                                    <p className="text-sm font-medium text-white/70">{title}</p>
+                                    <p className="mt-3 text-3xl font-semibold leading-none">
+                                        {value}
+                                    </p>
+                                    <p className="text-xs font-medium text-white/60">
+                                        {unit}
+                                    </p>
+                                </div>
+                                <div className="absolute bottom-4 right-4">
+                                    <Image
+                                        src={image}
+                                        alt={title}
+                                        width={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
+                                        height={(title === "Sleep" || title === "Heart Rate") ? 60 : 40}
+                                        className="object-contain"
+                                    />
+                                </div>
+                            </CardContent>
+                        </Card>
+                    ))}
                 </div>
 
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-                    <CaloriesBarChart data={caloriesData} />
-                    <DistanceLineChart data={distanceData} />
+                <div className="space-y-6">
+                    <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
+                        <ChartBarDefault data={stepsData} />
+                        <WeightLineChart data={weightData} />
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                        <HeartRateLineChart data={heartRateData} />
+                        <SpO2LineChart data={spo2Data} />
+                        <SleepDurationBarChart data={sleepData} />
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                        <CaloriesBarChart data={caloriesData} />
+                        <DistanceLineChart data={distanceData} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
